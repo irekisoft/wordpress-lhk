@@ -29,8 +29,8 @@ function lhk_options_page()
   <div>
   <h2><img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . 'lhk/img/logo.png'; ?>"><br>Lan heziketa Kudeaketa : Irekisoft </h2>
   <form method="post" action="options.php">
-  <?php 
-	settings_fields( 'lhk_options_group' ); 
+  <?php
+	settings_fields( 'lhk_options_group' );
 	do_settings_sections( 'lhk_options_group' );
 	?>
   <p>Opciones de configuraci&oacute;n sobre los cursos de formaci&oacute;n continua dados de alta en la aplicaci&oacute;n.</p>
@@ -50,7 +50,7 @@ function lhk_options_page()
   <label for="favcolor">Pincha para seleccionar un color para el borde de la tabla:</label>
   <input type="color" id="color_borde" name="color_borde" value="<?php echo get_option('color_borde'); ?>">
   <p><b>Nota:</b> la selección de color no estan soportada en navegadores Internet Explorer 11 o Safari 9.1 (o anteriores).</p>
-  <?php  submit_button(); ?>  
+  <?php  submit_button(); ?>
   </form>
   </div>
 <?php
@@ -62,7 +62,7 @@ ob_start();
 wp_enqueue_style( 'lhk', plugin_dir_url( dirname( __FILE__ ) ) . 'lhk/css/lhk.css', false, '1.0.0', 'all');
 wp_enqueue_style( 'font-awesome.min', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' );
 
-$lhk_url = get_option( 'lhk_url' ); 
+$lhk_url = get_option( 'lhk_url' );
 
 extract( shortcode_atts( array(
   'convocatoria' => 'all', 'idioma' => 'es'),
@@ -70,9 +70,9 @@ $atts ) );
 
 
 if ( !empty($atts) ) :
-	
+
 	$convocatoria_key = array_search('convocatoria', $atts);
- 
+
 	if( is_int($convocatoria_key) ) :
 		if ( $atts['convocatoria'] == 'all' ):
 			$json_url = $lhk_url.'/indice/'.$atts['convocatoria'].'/json?lang=es_ES';
@@ -101,7 +101,7 @@ $fecha_actual = strtotime(date("d-m-Y H:i:00",time()));
 if ( $mostrar_titulos_convocatoria == 1 ):
 echo "";
 else:
-	echo "<div class='lhk_alert lhk_alert-info' role='alert'>";	
+	echo "<div class='lhk_alert lhk_alert-info' role='alert'>";
 	if ( !empty($atts['convocatoria']) ) :
 		if ( $atts['convocatoria'] != 'all' ):
 			echo "<span class='lhk_alert-link'>".$decode[0]['convocatorias_titulo']."</span>";
@@ -122,7 +122,7 @@ if ( $mostrar_cerrados == 1 )  :
 	foreach ($decode as $curso) :
 		if($curso['terminado'] == 1) :
 			require( plugin_dir_path( __FILE__ ) . '/inc/mostrar_activos.php' );
-		endif; 
+		endif;
 	endforeach;
 wp_reset_postdata();
 else :
@@ -131,7 +131,7 @@ else :
 	endforeach;
 wp_reset_postdata();
 
-endif; 
+endif;
 echo "</tbody>";
 echo "</table>";
 return ob_get_clean();
