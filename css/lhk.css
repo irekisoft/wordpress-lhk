@@ -1,0 +1,11 @@
+.lhk_button {background-color: #eee; border: none; color: #333; padding: 8px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 1em; margin: 4px 2px; cursor: pointer; float:right;}
+.lhk_alert{padding: 15px; margin-bottom:20px; border: 1px solid transparent; border-radius: 4px;}
+.lhk_alert-info{color:#31708f; background-color:#d9edf7; border-color: #bce8f1;}
+.lhk_titulo{font-size: 1.1em; margin: 4px 0px 4px 5px; }
+.lhk_documentos{margin: 4px; font-weight:bold;}
+.lhk_descargas a{padding: 0px 10px;}
+.lhk_info {margin: 10px;}
+.lhk_info > i{padding-left:20px;}
+.lhk_info > i:first-child{padding-left:0px;}
+
+
