@@ -29,8 +29,8 @@ function lhk_options_page()
   <div>
   <h2><img src="<?php echo plugin_dir_url( dirname( __FILE__ ) ) . 'lhk/img/logo.png'; ?>"><br>Lan heziketa Kudeaketa : Irekisoft </h2>
   <form method="post" action="options.php">
-  <?php
-	settings_fields( 'lhk_options_group' );
+  <?php 
+	settings_fields( 'lhk_options_group' ); 
 	do_settings_sections( 'lhk_options_group' );
 	?>
   <p>Opciones de configuraci&oacute;n sobre los cursos de formaci&oacute;n continua dados de alta en la aplicaci&oacute;n.</p>
@@ -68,22 +68,18 @@ extract( shortcode_atts( array(
   'convocatoria' => 'all', 'idioma' => 'es'),
 $atts ) );
 
-
 if ( !empty($atts) ) :
-
-	$convocatoria_key = array_search('convocatoria', $atts);
-
-	if( is_int($convocatoria_key) ) :
-		if ( $atts['convocatoria'] == 'all' ):
-			$json_url = $lhk_url.'/indice/'.$atts['convocatoria'].'/json?lang=es_ES';
-		else :
-			$json_url = $lhk_url.'/indice/convocatoria/'.$atts['convocatoria'].'/json?lang=es_ES';
-		endif;
-	else:
-		$json_url = $lhk_url.'/indice/all/json?lang=es_ES';
-	endif;
+    if ( array_key_exists('convocatoria',$atts) ) :
+	    if ( $atts['convocatoria'] == 'all' ):
+		    $json_url = $lhk_url.'/indice/'.$atts['convocatoria'].'/json?lang=es_ES';
+	    else:
+    		$json_url = $lhk_url.'/indice/convocatoria/'.$atts['convocatoria'].'/json?lang=es_ES';
+	    endif;
+	elseif ( array_key_exists('idioma',$atts) ):
+        $json_url = $lhk_url.'indice/all/json?lang=es_ES';
+    endif;
 else:
-	$json_url = $lhk_url.'/indice/all/json?lang=es_ES';
+    $json_url = $lhk_url.'indice/all/json?lang=es_ES';
 endif;
 
 
